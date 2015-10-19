@@ -1,0 +1,17 @@
+namespace :deploy do
+  desc 'Notice deployment to newrelic from remote host'
+  task :newrelic_notice_deployment do
+    on roles(:app), in: :parallel do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :bundle, :exec, :newrelic, :deployments, '-u',
+                  fetch(:newrelic_deploy_user), '-r', 
+                  fetch(:newrelic_revision), 
+                  raise_on_non_zero_exit: false 
+        end 
+      end
+    end
+  end
+
+  after  :updated, :newrelic_notice_deployment
+end

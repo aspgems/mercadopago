@@ -1,0 +1,10 @@
+namespace :deploy do
+  desc 'Delete the HTML files used by design'
+  task :delete_html_dir do
+    on roles(:app), in: :parallel do
+      execute :rm, '-rf', release_path.join('app/assets/html')
+    end
+  end
+
+  before :updated, :delete_html_dir
+end

@@ -1,0 +1,10 @@
+namespace :deploy do
+  desc 'Symlink sphinx dir to db dir'
+  task :symlink_sphinx_dir do
+    on roles(:app), in: :parallel do
+      execute :ln, '-nfs', "#{shared_path}/sphinx", "#{release_path}/db/sphinx"
+    end
+  end
+
+  before :updated, :symlink_sphinx_dir
+end

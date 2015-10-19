@@ -1,0 +1,15 @@
+namespace :deploy do
+  desc 'Enables maintenance mode in the app'
+  task :maintenance_on do
+    on roles(:app), in: :parallel do
+      execute :cp, release_path.join('public/maintenance.html.disabled'), shared_path.join('public/system/maintenance.html')
+    end
+  end
+
+  desc 'Disables maintenance mode in the app'
+  task :maintenance_off do
+    on roles(:app), in: :parallel do
+      execute :rm, shared_path.join('public/system/maintenance.html')
+    end
+  end
+end

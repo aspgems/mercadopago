@@ -1,0 +1,23 @@
+namespace :deploy do
+
+  desc 'Unmonitor sidekiq'
+  task :sidekiq_monit_unmonitor do
+    on roles(:sidekiq), in: :parallel do
+      with rails_env: fetch(:rails_env) do
+        execute :sudo, '/usr/bin/monit', :unmonitor, fetch(:sidekiq_proccess_name)
+      end 
+    end
+  end
+
+  desc 'Monitor sidekiq'
+  task :sidekiq_monit_monitor do
+    on roles(:sidekiq), in: :parallel do
+      with rails_env: fetch(:rails_env) do
+        execute :sudo, '/usr/bin/monit', :monitor, fetch(:sidekiq_proccess_name)
+      end 
+    end
+  end
+
+  after :starting, :sidekiq_monit_unmonitor
+  after :finished, :sidekiq_monit_monitor
+end

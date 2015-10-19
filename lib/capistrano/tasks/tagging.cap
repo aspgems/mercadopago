@@ -1,0 +1,25 @@
+namespace :deploy do
+  desc 'creates a tag with the name specificed copying the specified source (default trunk)'
+  task :ask_tag do
+    begin
+      ask :tag_message, nil
+      $stdout.puts 'Introduce a not empty value' if fetch(:tag_message).to_s.empty?
+    end while fetch(:tag_message).to_s.empty?
+  end
+
+  desc 'creates a tag with the name specificed copying the specified source (default trunk)'
+  task :create_tag do
+    tag_name = [ fetch(:instance), fetch(:branch), Time.now.strftime('%Y%m%d_%H%M') ].uniq.join('/')
+
+    run_locally do
+      current_branch = capture(:git, 'rev-parse', '--abbrev-ref', 'HEAD')
+      execute :git, :checkout, fetch(:branch)
+      execute :git, :tag, '-fa', tag_name, "-m '#{tag_name}'"
+      execute :git, :push, :origin, tag_name
+      execute :git, :checkout, current_branch
+    end
+  end
+
+#  after :started,  :ask_tag
+  after :finished, :create_tag
+end

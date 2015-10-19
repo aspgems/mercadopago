@@ -5,15 +5,15 @@ development:
   <<: *default
   setting:                development_value
   # The following will become 'secure_setting'
-  _secure_secure_setting: oZ1lu4dzKhC/ik0+t4GatgRasSpZoVBTLwZsXZ7GUJqUixGDFetYdQrm+lLy5Xzgh7Wh68c4zDsfFNp5UP+2cHGKrLHp4vPHXf4zwEiplijl+t5PCaJt7cfreM51lvdksBBbX2/BQePcvJOQ/9KwyGXwWWjFFvW46u2f9KUfownl80apyRhvBr+h5j2DIC0bL4fp3ubB2GgmiNo06RzvCb44VXcip7NwbRAkvKQjwEpN920jGv23xCEnDQv2UWn1/ZcAbr3Nrs3Ascdp5TWE4qXxXdCQXQ0vVXguund2WWvqKAPUyy3rN5PXkeXBlNVhJSBC+465QtR3zJneP2ZyPQ==
+  secure_setting: secure_setting
 
 test:
   <<: *default
   setting:                test_value
   # The following will become 'secure_setting'
-  _secure_secure_setting: Uo0XuPegmR4vRN0Zc1z1+SvKWjYyvbIpDPw4lqXURDrOr73V44cmcrkX5g3LgEZELLE0ESaQOtmMpa9tpoOgE9qwaaPwlCD4Cf0RWcZV1/RiYpyWvKFuJ7EPN8e61Inqzx1VZF0Vu1t4uN02RTs0eT7542dfCQaNO8CYKxaXe24xb2bcjydw5E+K0yzeXAhiSuEMC1aDx7639t8rslKyvrSzWinshLCQR7nM9OrTbCHemLC3MOt7odiK9D118Q2stkTjCMJO6IlvNY+bnHTQY3R5vARtqG2xducbiaLFnZujPTJ1flduwqudeN6hJBOTOt+/8C2THF1bpn/G1zRpXw==
+  secure_setting: secure_setting
 production:
   <<: *default
   setting:                production_value
   # The following will become 'secure_setting'
-  _secure_secure_setting: SzQKibToPpBh1AQFIfU+lKt8V5EVriE/DBd3YEER1Mh2WrG9JQaVLwE7J+Sdmu29GuKL0/x8YzMmOReKHDnr7z5g6v8S0aLsbHcFCAXhegsK0j0mLwGfA0XE0e9NT+04Is9miPKjKstXAB7RN7PQBz71z5cL/sfsc07Iv6Q+to50SSds7D7JSIv0bApsTgBF9EePe9uOWrQSsCaEsZDiUZpf1GQZT9B6HrVaSAl+ETvxwlbLNQhbvva4DtAHjbAU7DSbm0D3CUmZB5Paw8utUPSilNkxfpknTH85P3u0OUx7mC6bHAc96PyR/pq+8Pp2RA1mp/oFpwBIa6xlfMDcdQ==
+  secure_setting: secure_setting

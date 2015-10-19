@@ -53,9 +53,13 @@ set :newrelic_revision,    -> { fetch(:current_revision) }
 
 # Hipchat notification
 set :hipchat_token, '77336b5d1c0704efe157e97e8cb04c'
-set :hipchat_room_name, '732053'
+set :hipchat_room_name, 'spainselect-servicios'
 set :hipchat_announce, true # notify users?
 set :hipchat_env, -> { fetch(:instance) }
+
+set :rollbar_token, '3a21c785160748219d59566a49d0a2c1'
+set :rollbar_env, Proc.new { fetch :stage }
+set :rollbar_role, Proc.new { :app }
 
 namespace :deploy do
 #  before :finished, 'deploy:sitemap:refresh'

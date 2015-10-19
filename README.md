@@ -1,4 +1,5 @@
-[![Code Climate](https://codeclimate.com/repos/53e0f88169568076c90127f3/badges/3c50ac5ad654152b21d1/gpa.svg)](https://codeclimate.com/repos/53e0f88169568076c90127f3/feed)
+[![Code Climate](https://codeclimate.com/repos/5624db9c695680428c000fd1/badges/49f2e23976ba81d941cd/gpa.svg)](https://codeclimate.com/repos/5624db9c695680428c000fd1/feed)
+[![Test Coverage](https://codeclimate.com/repos/5624db9c695680428c000fd1/badges/49f2e23976ba81d941cd/coverage.svg)](https://codeclimate.com/repos/5624db9c695680428c000fd1/coverage)
 
 INSTALLATION
 ============

@@ -1,14 +1,51 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Servicios</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<%= yield %>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
-</body>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css">
+  </head>
+
+  <body>
+
+  <div class="wrapper">
+    <nav id="nav">
+      <ul>
+        <li class="toggle"><i class="fi-list"></i></li>
+        <li><%= link_to('Home', root_path) %></li>
+        <li><a href="#Icons">Icons</a></li>
+        <li><a href="#Picture">Picture</a></li>
+        <li><a href="#Contact">Contact</a></li>
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to('Login', new_user_session_path)  %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+      <% if !notice.blank? || !alert.blank? %>
+      <h2>&nbsp;</h2>
+      <div class="row text-center">
+        <% unless notice.blank? %>
+          <p class="notice"><%= notice %></p>
+        <% end %>
+        <% unless alert.blank? %>
+          <p class="alert"><%= alert %></p>
+        <% end %>
+      </div>
+      <% end %>
+    <%= yield %>
+  </div>
+  </body>
 </html>

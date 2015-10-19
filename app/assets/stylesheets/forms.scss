@@ -1,0 +1,26 @@
+@import 'global';
+
+form {
+  input[type=submit] {
+    font-size: 1rem;
+    padding: 1rem 1rem 1.0625rem;
+    width: 100%;
+    background-color: $success-color;
+    color: #ffffff;
+
+    -moz-appearance: none;
+    border-radius: 0;
+    border-style: solid;
+    border-width: 0;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+    font-weight: normal;
+    line-height: normal;
+    margin: 0 0 1.25rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 300ms ease-out 0s;
+  }
+}

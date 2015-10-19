@@ -1,0 +1,14 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+form
+button.expand, .button.expand {
+  font-size: 1rem;
+  padding: 1rem 1rem 1.0625rem;
+  width: 100%;
+}
+button.success, .button.success {
+  background-color: #43ac6a;
+  border-color: #368a55;
+  color: #ffffff;
+}

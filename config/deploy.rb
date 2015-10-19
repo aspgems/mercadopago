@@ -46,7 +46,7 @@ set :rollbar_token, lambda {
 set :sidekiq_role,    -> { :sidekiq }
 set :sidekiq_options, -> { "-e #{fetch(:rails_env, 'production')} -L #{current_path}/log/sidekiq.log -C config/sidekiq.yml" }
 set :sidekiq_pid,     -> { "#{current_path}/tmp/pids/sidekiq.pid" }
-set :sidekiq_proccess_name, -> { "sidekiq_#{fetch(:application)}" }
+set :sidekiq_proccess_name, -> { "sidekiq_#{fetch(:client)}#{fetch(:application)}" }
 
 # Newrelic
 set :newrelic_revision,    -> { fetch(:current_revision) }

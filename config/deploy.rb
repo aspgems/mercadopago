@@ -58,5 +58,5 @@ set :hipchat_announce, true # notify users?
 set :hipchat_env, -> { fetch(:instance) }
 
 namespace :deploy do
-  before :finished, 'deploy:sitemap:refresh'
+#  before :finished, 'deploy:sitemap:refresh'
 end

@@ -1,0 +1,19 @@
+default: &default
+  title: 'SpainSelect Servicios'
+
+development:
+  <<: *default
+  setting:                development_value
+  # The following will become 'secure_setting'
+  _secure_secure_setting: Tc1pb33fNdgdmi0HH8v6lvFFN5QgINW2GbpsmbJgCbW2ZiMrpKfrcCR3Ooct/BWI4jgoF1usYrCqV9N+IzVzBVCUt0UoSz/f6uK7extbh21ZkvO/Bm5yKm0bfnPXGYFB6zfLkd3zg16VDOG/eD1/lbP+4kD9OaE7ckW0jwaHEtsCqOihazKyIK+IynWL3X9oJHJDej9QMkcuoSCgozgz/FtpUt1cxj6sBBh2Y3oc1qUenuXHRNPOgCQQ+6F+nTs2WN+uoMacXi0UnQmX1XLwCYZOAMbPXbWhv3hPgO5y1YYS2OukFs3CMnQsLEG5uTLZnQVGoMuM0Nv3X4gp80NhGw==
+
+test:
+  <<: *default
+  setting:                test_value
+  # The following will become 'secure_setting'
+  _secure_secure_setting: DBZCwnrIcN8iI1guI5ql1p9Ah5H38w8/86UzkM9hyJWwG/5ICjwGfjWxAUGiOaUrpI5ZkGfUEv66f+RAwE2wadLwxgWxv6uKHxOVlJdc8J0uzpA4soErvwfUSkK5XCjZYOY3jOnasC98czFxeq4jdXM+P3pBdgeJBp3RfC6rg1XlNA3CfPrs8YGNbqqoiEkgPG3hcHBcm75bjDun7JpltECteLuQGS/PCJ1M8aHm0KWLY5DBm0VdEOh2/zrXJ+gOPsyYsyaGEnhEgkyqSqfpZbtzId80QoIWK93O1BeMknn867ZZz+TCa7zexm9oYyy6W60jDYwKRlt7I/mtLyv1Jw==
+production:
+  <<: *default
+  setting:                production_value
+  # The following will become 'secure_setting'
+  _secure_secure_setting: AduXdSL3U2aHwALCV0Es9z/9KlAcsTWnivr8Gu6Gmab7strrcKvIJt0tKVaKrJvM3J3TbpPF7qHgt9reUwMIymQdf62M280Cwym583jvNKmJjG7xLlRXhexBU9RuIjrk/A921hW0SWjTy8w8Rg6wQbFb9vSYm8rC/kcOYZKs5YUze001ZolysS/Tdq0Qh3IF4sQ/E2PdC8GypVJ3qbYA9DZkYxZDfDdIAvEvHMqrAGCIoyfSX3ZV2hWxo3TFs1+2n/P7rnntFWEiULGIj2aNAOOoyEljAXHGXj+NnCXQ4yreygeyHr5lXKr1ZjcA9sTxQGyxzVw53MFtNjhkCoG7Xg==

@@ -18,6 +18,6 @@ namespace :deploy do
     end
   end
 
-  #after :starting, :sidekiq_monit_unmonitor
-  #after :finished, :sidekiq_monit_monitor
+  after :starting, :sidekiq_monit_unmonitor
+  after :finished, :sidekiq_monit_monitor
 end

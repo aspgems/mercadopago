@@ -1,0 +1,7 @@
+:verbose: false
+:concurrency:  2
+:logfile: ./log/sidekiq.log
+:pidfile: ./tmp/pids/sidekiq.pid
+:queues:
+  - [default, 3]
+  - [ts_delta, 1]

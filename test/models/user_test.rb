@@ -23,10 +23,15 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
-class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  # :recoverable
-  devise :database_authenticatable, :registerable,
-          :rememberable, :trackable, :validatable
+require 'test_helper'
+
+class UserTest < ActiveSupport::TestCase
+
+  test 'user is created' do
+    user = User.create( email: 'eowyn@rohan.org', name: 'Eowyn',
+                       password: 'rohirrim', password_confirmation: 'rohirrim')
+    assert user.valid?, "User should be valid, #{user.errors.inspect}"
+    assert_not_empty User.where(email: 'eowyn@rohan.org'), 'User not created'
+  end
+
 end

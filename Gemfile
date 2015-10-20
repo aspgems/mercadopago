@@ -110,9 +110,18 @@ end
 group :test do
   gem 'capybara'
   gem 'capybara-email'
-  gem 'poltergeist'
+  gem "codeclimate-test-reporter", require: nil
   gem 'database_cleaner'
   gem 'launchy'
+  gem 'mocha'
+  gem 'mock_redis'
+  gem 'minitest-rails-capybara'
+  gem 'minitest-reporters'
+  gem 'phantomjs', :require => 'phantomjs/poltergeist'
+  gem 'poltergeist'
+  gem "rack_session_access"
+  gem "selenium-webdriver"
   gem 'spork-rails'
   gem 'test_after_commit'
+
 end

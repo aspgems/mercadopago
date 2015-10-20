@@ -1,5 +1,7 @@
 default: &default
+  name: SpainSelectServicios
   title: 'SpainSelect Servicios'
+
 
 development:
   <<: *default

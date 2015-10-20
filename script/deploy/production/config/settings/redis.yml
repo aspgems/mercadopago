@@ -1,0 +1,15 @@
+defaults: &defaults
+
+  redis:
+    #This number corresponds to the database your application is using and must be provided by your system team
+    database: 9
+
+    host: localhost
+    port: 6379
+
+development:
+  <<: *defaults
+
+production:
+  <<: *defaults
+

@@ -63,4 +63,5 @@ set :rollbar_role, Proc.new { :app }
 
 namespace :deploy do
 #  before :finished, 'deploy:sitemap:refresh'
+  after :updated, 'newrelic:notice_deployment'
 end

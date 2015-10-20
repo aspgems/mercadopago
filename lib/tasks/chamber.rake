@@ -7,7 +7,7 @@ namespace :chamber do
   task secure: :environment do
     environment = prepare_params(ARGV[1..1]).first
     basepath = environment ? "#{Rails.root}/script/deploy/#{environment}/config" : "#{Rails.root}/config"
-    encryption_key = "#{basepath}/chamber.pub.pem"
+    encryption_key = "#{basepath}/chamber.pem.pub"
     files = ["#{basepath}/settings.yml","#{basepath}/settings/*.{yml,yml.erb}"]
     puts "Basepath : #{basepath}"
     puts "Encryption_key : #{encryption_key}"

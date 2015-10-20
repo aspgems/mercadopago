@@ -12,7 +12,9 @@ role :sidekiq, %w(c3po.aspgems.com)
 set :app_env, 'integration'
 set :branch,  fetch(:app_env)
 set :instance, fetch(:branch)
-set :newrelic_deploy_user, 'servicios'
+set :newrelic_appname, 'SpainSelect Servicios (Staging)'
+set :newrelic_deploy_user, 'spainselectservicios'
+
 
 # Extended Server Syntax
 # ======================

@@ -4,6 +4,21 @@
 INSTALLATION
 ============
 
+  - Change the codeclimate icons up in this page
+  - Change the gemset in .ruby-gemset
+  - Change the name of application in several configuration files
+  - Change the newrelic key
+  - Change the rollbar
+  - Change the certificates in config, and in scripts/[environment]
+  - bundle install -> You have to install it with gem install bundler
+  - Change the secret of secrets.yml: you can generate a new secret with rake secret
+  - Secure your new settings in yml with: rake chamber:secure
+  - Secure your integration deploy settings with: rake chamber:secure integration
+  - Change the host names in config/deploy/[environment].rb
+  - Remove this installation instructions and add yours
+
+
+
 * Requirements
 ==============
 

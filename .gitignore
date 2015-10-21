@@ -18,6 +18,7 @@
 .idea
 /docs/.*
 
+.idea/*
 # Private and protected key files for Chamber
 .chamber.pem
 .chamber.pem.enc

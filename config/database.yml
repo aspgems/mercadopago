@@ -8,9 +8,9 @@ default: &default
   adapter: mysql2
   pool: 5
   timeout: 5000
-  host: <%= Chamber.env.database.host %>
-  username: <%= Chamber.env.database.username %>
-  password: <%= Chamber.env.database.password %>
+  host: localhost
+  username: root
+  password:
 
 development:
   <<: *default

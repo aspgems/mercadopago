@@ -1,6 +1,6 @@
 require 'redis/namespace'
 
-Redis.current = Redis::Namespace.new(Chamber.env.name, host: Chamber.env.redis.host, port: Chamber.env.redis.port)
+Redis.current = Redis::Namespace.new(Chamber.env.app.name, host: Chamber.env.redis.host, port: Chamber.env.redis.port)
 Redis.current.select(Chamber.env.redis.database)
 
 if defined?(PhusionPassenger)

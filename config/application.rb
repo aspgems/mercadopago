@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module Servicios
   class Application < Rails::Application
+    config.before_configuration do
+      require_relative 'initializers/0_settings'
+    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -24,7 +27,7 @@ module Servicios
     config.active_record.raise_in_transactional_callbacks = true
 
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
-    config.i18n.default_locale = :es
+    config.i18n.default_locale = Chamber.env.app.locale
 
   end
 end

@@ -26,7 +26,7 @@ require 'rollbar/capistrano3'
 require 'capistrano/sidekiq'
 #require 'capistrano/sidekiq/monit'
 require 'thinking_sphinx/capistrano'
-#require 'whenever/capistrano'
+require 'whenever/capistrano'
 require 'new_relic/recipes'
 
 require 'capistrano-db-tasks'

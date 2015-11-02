@@ -29,5 +29,9 @@ module Servicios
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     config.i18n.default_locale = Chamber.env.app.locale
 
+    config.generators do |g|
+      g.test_framework :minitest, spec: false, fixture: true
+    end
+
   end
 end

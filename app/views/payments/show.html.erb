@@ -1,0 +1,46 @@
+<section>
+  <a name="Payments"></a>
+
+  <h2>Payment</h2>
+
+  <div class="row text-right">
+    <%= render 'payment', payment: @payment %>
+  </div>
+  <% unless @payment.remote_code.blank? %>
+    <div class="row text-center">
+      <h3>Refunds</h3>
+    </div>
+    <div class="row text-right">
+      <% @payment.refunds.each do |refund| %>
+        <div class="small-12 medium-1 columns">
+          <%= @payment.amount.blank? ? '--' : @payment.amount %>
+        </div>
+        <div class="small-12 medium-1 columns">
+          <%= refund.amount.blank? ? '--' : refund.amount %>
+        </div>
+        <div class="small-12 medium-2 columns">
+          <span title="<%= payment.data  %>"><%= refund.remote_code.blank? ? 'Failed' : 'Executed' %></span>
+        </div>
+        <div class="small-12 medium-8 columns" >
+          <span title="<%= refund.data  %>"><%= refund.message.blank? ? '-' : refund.message  %></span>
+        </div>
+      <% end %>
+
+    </div>
+    <div class="row text-right">
+      <form action="<%= payment_refunds_path(@payment) %>" method="post" id="refund" name="refund">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <input id="amount" name="amount" value="0.25" type="text"/>
+        <input type="submit" value="Refund!">
+      </form>
+    </div>
+    <div class="row text-right">
+      <form action="<%= payment_refunds_path(@payment) %>" method="post" id="pay" name="pay">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <input type="submit" value="Full Refund"/>
+      </form>
+    </div>
+  <% end %>
+
+</section>
+

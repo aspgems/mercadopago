@@ -25,3 +25,4 @@
 
 # Thinking sphinx generated file
 /config/*.sphinx.conf
+/config/settings/*-development.yml

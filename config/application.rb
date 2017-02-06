@@ -8,6 +8,15 @@ Bundler.require(*Rails.groups)
 
 module Servicios
   class Application < Rails::Application
+
+    initializer 'mercadopago.chamber.load', before: :load_environment_config do
+      Chamber.load files: [Rails.root + 'config/settings/**/*.{yml,yml.erb}'],
+                   decryption_key: Rails.root + 'config/chamber.pem',
+                   namespaces: {
+                       environment: -> { ::Rails.env },
+                       hostname:    -> { Socket.gethostname } }
+    end
+
     config.before_configuration do
       require_relative 'initializers/0_settings'
     end

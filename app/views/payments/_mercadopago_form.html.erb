@@ -1,0 +1,157 @@
+<script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
+
+
+<% payment.errors.each do |attr, msg| %>
+  <div class="alert" ><%= attr.to_s == 'base' ? "#{msg}" : "#{attr}: #{msg}"  %></div>
+<% end %>
+
+<form action="<%= payments_path %>" method="post" id="pay" name="pay" >
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <fieldset>
+    <ul>
+      <li>
+        <label for="email">Email</label>
+        <input id="email" name="email" value="user@example.com" type="email" placeholder="your email"/>
+      </li>
+      <li>
+        <label for="cardNumber">Credit card number:</label>
+        <input type="text" id="cardNumber" data-checkout="cardNumber" value="" />
+      </li>
+      <li>
+        <label for="securityCode">Security code:</label>
+        <input type="text" id="securityCode" data-checkout="securityCode" value="123" />
+      </li>
+      <li>
+        <label for="cardExpirationMonth">Expiration month:</label>
+        <input type="text" id="cardExpirationMonth" data-checkout="cardExpirationMonth" value="12" />
+      </li>
+      <li>
+        <label for="cardExpirationYear">Expiration year:</label>
+        <input type="text" id="cardExpirationYear" data-checkout="cardExpirationYear" value="2019" />
+      </li>
+      <li>
+        <label for="cardholderName">Card holder name:</label>
+        <input type="text" id="cardholderName" data-checkout="cardholderName" value="APRO" />
+      </li>
+      <li>
+        <label for="docType">Document type:</label>
+        <select id="docType" data-checkout="docType"></select>
+      </li>
+      <li>
+        <label for="docNumber">Document number:</label>
+        <input type="text" id="docNumber" data-checkout="docNumber" value="12345678" />
+      </li>
+      <li>
+        <label for="amount">Amount:</label>
+        <input type="text" name="amount"  value="12.50" />
+      </li>
+    </ul>
+    <input type="submit" value="Pay!" />
+  </fieldset>
+</form>
+
+<script type="text/javascript">
+
+  $(function(){
+
+
+    Mercadopago.setPublishableKey('<%= Chamber.env.mercadopago.public_key %>');
+    Mercadopago.getIdentificationTypes();
+
+
+    function addEvent(el, eventName, handler){
+      if (el.addEventListener) {
+        el.addEventListener(eventName, handler);
+      } else {
+        el.attachEvent('on' + eventName, function(){
+          handler.call(el);
+        });
+      }
+    };
+
+    function getBin() {
+      var ccNumber = document.querySelector('input[data-checkout="cardNumber"]');
+      return ccNumber.value.replace(/[ .-]/g, '').slice(0, 6);
+    };
+
+  function guessingPaymentMethod(event) {
+    var bin = getBin();
+
+    if (event.type == "keyup") {
+      if (bin.length >= 6) {
+        Mercadopago.getPaymentMethod({
+          "bin": bin
+        }, setPaymentMethodInfo);
+      }
+    } else {
+      setTimeout(function() {
+        if (bin.length >= 6) {
+          Mercadopago.getPaymentMethod({
+            "bin": bin
+          }, setPaymentMethodInfo);
+        }
+      }, 100);
+    }
+  };
+
+  function setPaymentMethodInfo(status, response) {
+    if (status == 200) {
+      // do somethings ex: show logo of the payment method
+      var form = document.querySelector('#pay');
+
+      if (document.querySelector("input[name=payment_method_id]") == null) {
+        var paymentMethod = document.createElement('input');
+        paymentMethod.setAttribute('name', "payment_method_id");
+        paymentMethod.setAttribute('type', "hidden");
+        paymentMethod.setAttribute('value', response[0].id);
+
+        form.appendChild(paymentMethod);
+      } else {
+        document.querySelector("input[name=payment_method_id]").value = response[0].id;
+      }
+    }
+  };
+
+    addEvent(document.querySelector('input[data-checkout="cardNumber"]'), 'keyup', guessingPaymentMethod);
+    addEvent(document.querySelector('input[data-checkout="cardNumber"]'), 'change', guessingPaymentMethod);
+
+    setTimeout(function(){
+      $('input[data-checkout="cardNumber"]').val("4509 9535 6623 3704");
+      $('input[data-checkout="cardNumber"]').trigger("change");
+      guessingPaymentMethod({type:'keyup'});
+    },1000);
+
+
+
+  var doSubmit = false;
+  addEvent(document.querySelector('#pay'),'submit',doPay);
+  function doPay(event){
+    event.preventDefault();
+    if(!doSubmit){
+      var $form = document.querySelector('#pay');
+
+      Mercadopago.createToken($form, sdkResponseHandler); // The function "sdkResponseHandler" is defined below
+
+      return false;
+    }
+  };
+
+  function sdkResponseHandler(status, response) {
+    if (status != 200 && status != 201) {
+      alert("verify filled data");
+    }else{
+
+      var form = document.querySelector('#pay');
+
+      var card = document.createElement('input');
+      card.setAttribute('name',"token");
+      card.setAttribute('type',"hidden");
+      card.setAttribute('value',response.id);
+      form.appendChild(card);
+      doSubmit=false;
+      form.submit();
+    }
+  };
+
+  });
+</script>

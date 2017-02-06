@@ -1,0 +1,15 @@
+<div class="small-12 medium-3 columns">
+  <%= payment.first_name.blank? ?  '--' : payment.first_name %>
+</div>
+<div class="small-12 medium-3 columns">
+  <%= payment.number.blank? ?  '--' : payment.number %>
+</div>
+<div class="small-12 medium-2 columns">
+  <%= payment.amount.blank? ?  '--' : payment.real_amount %>
+</div>
+<div class="small-12 medium-2 columns">
+  <span title="<%= payment.data  %>"><%= payment.remote_code.blank? ? 'Failed' : 'Executed' %></span>
+</div>
+<div class="small-12 medium-2 columns">
+  <a href="<%= payment_path(payment) %>" >Detail</a>
+</div>

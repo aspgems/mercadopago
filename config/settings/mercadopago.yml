@@ -1,0 +1,6 @@
+mercadopago:
+  short_name: SHORT NAME
+  client_id: CLIENT ID
+  client_secret: CLIENT SECRET
+  public_key: PUBLIC KEY
+  access_token: ACCESS TOKEN

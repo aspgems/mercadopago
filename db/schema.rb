@@ -11,7 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151018105807) do
+ActiveRecord::Schema.define(version: 20170203130703) do
+
+  create_table "payments", force: :cascade do |t|
+    t.string   "first_name",         limit: 255
+    t.string   "last_name",          limit: 255
+    t.string   "number",             limit: 255
+    t.string   "month",              limit: 255
+    t.integer  "year",               limit: 4
+    t.string   "verification_value", limit: 255
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "token",              limit: 255
+    t.string   "remote_code",        limit: 255
+    t.decimal  "amount",             precision: 15, scale: 3
+    t.string   "currency",           limit: 255
+    t.string   "payment_method_id",  limit: 255
+    t.string   "email",              limit: 255
+    t.string   "message",            limit: 255
+    t.text     "data",               limit: 65535
+  end
+
+  create_table "refunds", force: :cascade do |t|
+    t.integer  "payment_id",  limit: 4, index: {name: "fk_refunds_payment_id", using: :btree}, foreign_key: {references: "payments", name: "fk_refunds_payment_id", on_update: :restrict, on_delete: :restrict}
+    t.decimal  "amount",      precision: 15, scale: 3
+    t.string   "remote_code", limit: 255
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "message",     limit: 255
+    t.text     "data",        limit: 65535
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false, index: {name: "index_users_on_email", unique: true, using: :btree}

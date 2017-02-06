@@ -19,7 +19,7 @@
           <%= refund.amount.blank? ? '--' : refund.amount %>
         </div>
         <div class="small-12 medium-2 columns">
-          <span title="<%= payment.data  %>"><%= refund.remote_code.blank? ? 'Failed' : 'Executed' %></span>
+          <span title="<%= refund.data  %>"><%= refund.remote_code.blank? ? 'Failed' : 'Executed' %></span>
         </div>
         <div class="small-12 medium-8 columns" >
           <span title="<%= refund.data  %>"><%= refund.message.blank? ? '-' : refund.message  %></span>

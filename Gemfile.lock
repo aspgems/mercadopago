@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/aspgems/active_merchant.git
-  revision: b7184c96af5a74553cea72f420a6314d818d557d
+  revision: fcb1ad8438eb9a2052b6b79fce3c2cf3ce5b4b35
   specs:
     activemerchant (1.62.0)
       activesupport (>= 3.2.14, < 5.1)
@@ -228,7 +228,7 @@ GEM
     key_struct (0.4.2)
     launchy (2.4.3)
       addressable (~> 2.3)
-    libv8 (3.16.14.17-x86_64-linux)
+    libv8 (3.16.14.17)
     listen (3.0.3)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)

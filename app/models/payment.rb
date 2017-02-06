@@ -29,7 +29,7 @@ class Payment < ActiveRecord::Base
   def  pay!
     save
     # ActiveMerchant accepts all amounts as Integer values in cents
-    response = gateway.purchase((self.amount.to_f * 100).to_i, {card_token: self.token, payment_method_id: self.payment_method_id}, {order_id: self.id, email: self.email})
+    response = gateway.purchase((self.amount.to_f * 100).to_i, {card_token: self.token, brand: self.payment_method_id}, {order_id: self.id, email: self.email})
 
     if response.success?
       card_params = response.params['card']
